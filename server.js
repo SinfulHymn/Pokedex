@@ -18,11 +18,11 @@ app.get("/", (req,res)=>{
 })
 
 app.get("/pokemon/", (req,res)=>{
-    res.render("index.ejs", { data: Pokemon})
+    res.render("index.ejs", { allPokemon: Pokemon})
 })
 
 app.get("/pokemon/:id",(req,res)=>{
-    res.render("show.ejs", {data: Pokemon[req.params.id]})
+    res.render("show.ejs", {pokemon: Pokemon[req.params.id]})
 })
 
 

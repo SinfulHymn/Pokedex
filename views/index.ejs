@@ -4,6 +4,16 @@
     <%- include('./partials/head.ejs') %> 
 </head>
 <body>
-    <h1>test</h1>
+    <ul>
+       <% allPokemon.slice(-16).forEach((element,index,array)=>{ %>
+        <li>
+
+            <a href="/pokemon/<%=index%>">
+                <img src="<%=allPokemon[index].img%> " alt="" class="pokemon-imgs">
+                <!-- <%=allPokemon[index].img%>  -->
+            </a>
+        <% }) %> 
+        </li>
+    </ul>
 </body>
 </html>

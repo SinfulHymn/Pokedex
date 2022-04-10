@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('./partials/head.ejs') %>
+  </head>
+  <body>
+    <div class="pokemon-base">
+        <h1 id="pokemon-title"><%= pokemon.name %></h1>
+        <h2 id="pokemon-id">id:#<%= pokemon.id %></h2>
+        <img src="<%= pokemon.img %> " alt="" />
+
+    </div>
+    
+    <!-- pokemon-type -->
+    <div class="pokemon-type">
+      <h3>Type</h3>
+      <% pokemon.type.forEach((element,index)=>{ %>
+      <div class="pokemon-type-name"><p><%=element%></p></div>
+      <% }) %>
+    </div>
+    <!-- pokemon-stats -->
+    <div class="pokemon-stats">
+        <h3>Stats</h3>
+      <% for(const key in pokemon.stats){ %>
+      <p><%=key%>: <%=pokemon.stats[key]%></p>
+
+      <% } %>
+    </div>
+
+  </body>
+</html>

@@ -1,47 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+  <!-- head -->
+  <%- include('./partials/head.ejs') %>
 
-<head>
-  <%- include('./partials/show-head.ejs') %>
-</head>
-
-<body>
-  <div class="pokemon-base">
-    <h3>
-      <a href="/pokemon">Return to Pokedex</a>
-    
-    </h3>
-    <h1 id="pokemon-title">
-      <%= pokemon.name %>
-    </h1>
-    <h2 id="pokemon-id">id:#<%= pokemon.id %>
-    </h2>
-    <img src="<%= pokemon.img %> " alt="" />
-
-  </div>
-
-  <!-- pokemon-type -->
-  <div class="pokemon-type">
-    <h3>Type</h3>
-    <% pokemon.type.forEach((element,index)=>{ %>
-      <div class="pokemon-type-name">
-        <p>
-          <%=element%>
-        </p>
+  <body>
+    <!-- header -->
+    <%- include('./partials/header.ejs') %>
+    <div class="container">
+      <div class="pokemon-image">
+        <img src="<%=pokemon.img%> " alt="<%=pokemon.name%>">        
       </div>
-      <% }) %>
-  </div>
-  <!-- pokemon-stats -->
-  <div class="pokemon-stats">
-    <h3>Stats</h3>
-    <% for(const key in pokemon.stats){ %>
-      <p>
-        <%=key%>: <%=pokemon.stats[key]%>
-      </p>
 
-      <% } %>
-  </div>
+      <div class="detail">
+        ID: <%=pokemon.id%> <br>
+        name: <%=pokemon.name%> <br>
+        <h5>type:</h5>
+        <% pokemon.type.forEach((type,index)=>{ %>
+          <span class="type">
+            <%=type%>
+          </span>   
+        <% }) %> 
+        <h5>stats:</h5>
+        <% for(const stat in pokemon.stats){ %>
+          <%=stat%>: <%=pokemon.stats[stat] %> <br>
+        <% } %> 
+        <a href="/pokemon/<%=index%>/edit "><button>edit</button></a>
+        <form action="/pokemon/<%=index%>?_method=DELETE" method="POST">
+          <input type="submit" value="DELETE">
+        </form>
+      </div>
 
-</body>
+      
+    </div>
+    
 
+
+  </body>
 </html>

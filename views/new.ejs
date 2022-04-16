@@ -1,17 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-    <%- include("partials/new-head.ejs") %>
-<body>
-    <h1>Add new pokemon 898</h1>
-    <form action="/pokemon" method="post">
-        Name: <input type="text" name="name" /> <br/>
-        
-         <br />
-        <input type="submit" value="Create pokemon">
-    </form>
-    <div class="pokemon-wrapper">
+  <!-- head -->
+  <%- include('./partials/head.ejs') %>
 
-        <img src="https://i0.wp.com/www.alphr.com/wp-content/uploads/2016/07/whos_that_pokemon.png?fit=1920%2C1080&ssl=1" alt="">
+  <body>
+    <%- include("./partials/header.ejs") %>
+    <!-- pokedex-container -->
+    <div class="container">
+      <!-- pokemon-image -->
+      <div class="pokemon-image">
+          
+        <img id="sill"src="/static/pokemon_sill.png" alt="pokemon_sill" />
+      </div>
+
+      <div class="detail">
+        <form action="/pokemon/" method="post">
+          <div>
+            id#: <input type="text" name="id" placeholder="<%=pokemon.id%>" /> <br />
+            name: <input type="text" name="name" placeholder="<%=pokemon.name%>" />
+            <br />
+          </div>
+          <h5>Type:</h5>
+          <% pokemon.type.forEach((type,index)=>{ %> type:
+          <input type="text" name="type" placeholder="<%=pokemon.type[index]%>" />
+          <br />
+          <% }) %>
+          
+          <h5>Stats:</h5>
+            <% for(const stat in pokemon.stats) {%>
+               <%=stat%>:  <input type="text" name="stats" placeholder="<%=pokemon.stats[stat]%>"> <br>
+            <% } %> 
+           <br> <input type="submit" placeholder="Update pokemon">
+                
+        </form>
+        <a href="/pokemon/<%=index%> ">
+        <button>cancel</button>
+        </a>
+      </div>
+
+      <!--end of pokedex-container -->
     </div>
-</body>
+  </body>
 </html>

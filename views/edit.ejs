@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- head -->
+  <%- include('./partials/head.ejs') %>
+
+  <body>
+    <%- include("./partials/header.ejs") %>
+    <!-- pokedex-container -->
+    <div class="container">
+      <!-- pokemon-image -->
+      <div class="pokemon-image">
+        <img src="<%=pokemon.img%>" alt="<%=pokemon.name%>" />
+      </div>
+
+      <div class="detail">
+        <form action="/pokemon/<%=index%>?_method=PUT" method="post">
+          <div>
+            id#: <input type="text" name="id" value="<%=pokemon.id%>" /> <br />
+            name: <input type="text" name="name" value="<%=pokemon.name%>" />
+            <br />
+          </div>
+          <h5>Type:</h5>
+          <% pokemon.type.forEach((type,index)=>{ %> type:
+          <input type="text" name="type" value="<%=pokemon.type[index]%>" />
+          <br />
+          <% }) %>
+          
+          <h5>Stats:</h5>
+            <% for(const stat in pokemon.stats) {%>
+               <%=stat%>:  <input type="text" name="stats" value="<%=pokemon.stats[stat]%>"> <br>
+            <% } %> 
+           <br> <input type="submit" value="Update pokemon">
+                
+        </form>
+        <a href="/pokemon/<%=index%> ">
+        <button>cancel</button>
+        </a>
+      </div>
+
+      <!--end of pokedex-container -->
+    </div>
+  </body>
+</html>

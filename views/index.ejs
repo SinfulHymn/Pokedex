@@ -1,34 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <%- include('./partials/index-head.ejs') %>
-</head>
-
+<!-- head -->
+<%- include('./partials/head.ejs') %>
 <body>
-    <header>
-        <h1>Pokedex</h1>
-
-        <h2>
-            <a href="/pokemon/new">new pokemon</a>
-        </h2>
-    </header>
-    <div class="pokemon-wrapper">
-
-        <ul>
-            <% allPokemon.forEach((element,index,array)=>{ %>
-                <li>
-                    <h5><%=array[index].name%></h5>
-                    <a href="/pokemon/<%=index%>">
-                        <img src="<%=allPokemon[index].img%> " alt="" class="pokemon-imgs">
-                        <!-- <%=allPokemon[index].img%>  -->
-                    </a>
-                    <h6>#<%=array[index].id%></h6>
-                    <% }) %>
-                </li>
-        </ul>
-
-    </div>
+    
+<!-- header -->
+<%- include('./partials/header.ejs') %> 
+<!-- new pokemon link -->
+<h1 class="new-pokemon">
+    <a href="/pokemon/new">
+        <button>add new pokemon</button>
+    </a>
+</h1>
+        <!-- container-->
+        <div class="container">
+            
+            <!-- allPokemon loop -->
+            <% allPokemon.forEach((pokemon,index)=>{ %>
+            <!-- pokemon container -->
+            <a class="pokemon-container" href="/pokemon/<%=index%>">
+                <!-- data container -->
+                 <div class="data-container">   
+                    <!-- pokemon image -->
+                    <img src="<%=pokemon.img%> " alt="<%=pokemon.name%> " class="pokemon-img">
+                    <!-- data -->
+                    <h5>#<%=pokemon.id%></h5>
+                    <h3><%=pokemon.name%></h3>
+                    <!-- all-types container -->
+                    <div class="all-types">
+                    <%pokemon.type.forEach((type,index)=>{ %>
+                        <!-- type container -->
+                        <div class="type">
+                           <%=type %>
+                        </div>
+                    <%}) %> 
+                    </div>
+                </div>      
+            </a>
+            <% }) %>
+        </div>
+    
 </body>
-
 </html>

@@ -16,4 +16,4 @@ $(".type:contains(Ghost)").css({ "color": "#735746" });
 $(".type:contains(Dark)").css({ "color": "#705746" });
 $(".type:contains(Steel)").css({ "color": "#B7B7CE",  });
 $(".type:contains(Fairy)").css({ "color": "#D685AD",  });
-$("h5:contains(Dragon)").css({ "color": "#6F35FC"});
+$(".type:contains(Dragon)").css({ "color": "#6F35FC"});

@@ -9,7 +9,7 @@
     <div class="container">
       <!-- pokemon-image -->
       <div class="pokemon-image">
-        <img src="<%=pokemon.img%>" alt="<%=pokemon.name%>" />
+        <img id="pokemon-image"src="<%=pokemon.img%>" alt="<%=pokemon.name%>" />
       </div>
 
       <div class="detail">
@@ -21,13 +21,13 @@
           </div>
           <h5>Type:</h5>
           <% pokemon.type.forEach((type,index)=>{ %> type:
-          <input type="text" name="type" value="<%=pokemon.type[index]%>" />
+          <input type="text" name="type[]" value="<%=pokemon.type[index]%>" />
           <br />
           <% }) %>
           
           <h5>Stats:</h5>
             <% for(const stat in pokemon.stats) {%>
-               <%=stat%>:  <input type="text" name="stats" value="<%=pokemon.stats[stat]%>"> <br>
+               <%=stat%>:  <input type="text" name="stats[<%=stat%>]" value="<%=pokemon.stats[stat]%>"> <br>
             <% } %> 
            <br> <input type="submit" value="Update pokemon">
                 

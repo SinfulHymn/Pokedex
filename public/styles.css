@@ -9,7 +9,7 @@ body {
 
 header {
     background-color: #d7d7d5;
-    height: 90%;
+    max-height: 80%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -40,6 +40,7 @@ a {
     /* background-color: white; */
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 
     /* margin: -10px 0 0 -10px; */
 }
@@ -72,8 +73,22 @@ a {
     padding: 0px;
     margin: 6px;
     max-width: 150px;
-    max-height: 150px; 
+    max-height: 150px;  
 }
+.detail{
+    width: 400px;
+}
+.pokemon-image{
+        max-width: 340px;
+        max-height: 340px;
+}
+#pokemon-image{
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+    overflow: hidden; 
+}
+
 .all-types{
     display: flex;
     justify-content:  space-between;
@@ -120,17 +135,4 @@ a {
       ". . . . . . . . . . . . . ."
       ". . . . . . . . . . . . . ." */
 }
-#pokemon-image{
-    max-width: 50%;
-}
-/* .pokedex-container > #image {
-    grid-area: image;
-    padding: 1em;
-    margin-left: auto;
-    margin-right: auto;
-}
 
-.pokedex-container > #detail {
-    grid-area: detail;
-    padding: 1em;
-} */

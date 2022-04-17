@@ -28,6 +28,7 @@ app.get("/pokemon/new", (req, res) => {
     pokemon: pokemon[1],
     index: 1,
   });
+  
 });
 
 //show
@@ -47,7 +48,10 @@ app.get("/pokemon/:id/edit", (req, res) => {
 
 //create
 app.post("/pokemon", (req, res) => {
-    console.log(req.body)
+    
+  req.body.img = "/static/pokemon_sill.png"
+  
+  console.log(req.body)
   pokemon.push(req.body);
 
   res.redirect("/pokemon");
@@ -61,8 +65,20 @@ app.delete("/pokemon/:id", (req, res) => {
   res.redirect("/pokemon");
 });
 
-app.put("pokemon/:id", (req, res) => {
-  console.log(req.body);
+app.put("/pokemon/:id", (req, res) => {
+  let updatedPokemon = {...pokemon[req.params.id]}
+  
+  updatedPokemon.id = req.body.id
+  updatedPokemon.name = req.body.name
+  updatedPokemon.type = req.body.type
+  updatedPokemon.stats = req.body.stats
+  console.log(req.body)  
+  // console.log(updatedPokemon)
+  // console.log(typeof(req.body))
+  // console.log(pokemon[req.params.id])
+  pokemon[req.params.id] = updatedPokemon
+  res.redirect(`/pokemon/${req.params.id}`)
+  
 }); 
 
 app.listen(PORT, () => {
